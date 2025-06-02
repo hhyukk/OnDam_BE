@@ -1,24 +1,24 @@
 import User from '../models/User';
 
 export const join = async (req, res) => {
-  const { id, password, name, gender, phone, identification_Number, adress, profile } = req.body;
+  const { id, password, name, gender, phone, identification_Number, address } = req.body;
+  const profile = req.file ? req.file.path : '';
+  console.log(profile);
 
   try {
-    // 아이디 중복 체크
     const exists = await User.exists({ id });
     if (exists) {
       return res.status(400).json({ message: '이미 존재하는 아이디입니다.' });
     }
 
-    // 새 사용자 생성
     await User.create({
       id,
       password,
       name,
       gender,
       phone,
-      //   identification_Number,
-      adress,
+      identification_Number,
+      address,
       profile,
     });
 
