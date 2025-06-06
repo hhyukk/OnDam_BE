@@ -18,7 +18,7 @@ const s3AvatarStorage = multerS3({
   acl: 'public-read',
   key: function (req, file, cb) {
     const userId = req.body.id || 'temp';
-    cb(null, `profiles/${userId}/${Date.now()}.jpg`);
+    cb(null, `certificateFile/${userId}/${Date.now()}.jpg`);
   },
 });
 

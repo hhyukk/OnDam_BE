@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   identification_Number: { type: String, required: true },
   address: { type: String, required: true },
-  profile: { type: String },
 });
 
 userSchema.pre('save', async function () {

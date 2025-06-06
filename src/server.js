@@ -5,6 +5,8 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import rootRouter from './routers/rootRouter';
 import smsRouter from './routers/smsRouter.js';
+import userRouter from './routers/userRouter.js';
+import counselorRoutes from './routers/counselorRoutes.js';
 
 const cors = require('cors');
 
@@ -22,6 +24,7 @@ app.use(
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
-app.use('/api/user', rootRouter);
+app.use('/api/user', userRouter);
+app.use('/api/counselor', counselorRoutes);
 app.use('/api/sms', smsRouter);
 export default app;

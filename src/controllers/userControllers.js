@@ -2,7 +2,6 @@ import User from '../models/User';
 
 export const join = async (req, res) => {
   const { id, password, name, gender, phone, identification_Number, address } = req.body;
-  const profile = req.file ? req.file.path : '';
   console.log(profile);
 
   try {
@@ -19,12 +18,11 @@ export const join = async (req, res) => {
       phone,
       identification_Number,
       address,
-      profile,
     });
 
     return res.status(201).json({ message: '회원가입이 완료되었습니다.' });
   } catch (error) {
-    console.error('회원가입 오류:', error);
+    console.error('내담자 회원가입 오류:', error);
     return res.status(500).json({ message: '서버 오류가 발생했습니다.' });
   }
 };
